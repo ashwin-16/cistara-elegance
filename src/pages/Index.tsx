@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Award, Headphones, Shield, Leaf } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImg from "@/assets/hero-glassware.jpg";
@@ -33,48 +34,77 @@ const features = [
   { icon: Leaf, title: "Sustainable", desc: "Committed to eco-friendly practices and products" },
 ];
 
-const Index = () => (
-  <Layout>
-    {/* Hero */}
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroImg} alt="Premium glassware" className="w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-      </div>
+const heroHeadlines = [
+  { top: "Premier Hospitality", highlight: "Supply Partner" },
+  { top: "Premium Malta", highlight: "Glassware" },
+  { top: "Elegant Cake", highlight: "Dome Stands" },
+  { top: "Luxury Buffet", highlight: "Equipment" },
+  { top: "Fine Dining", highlight: "Essentials" },
+];
 
-      <div className="container mx-auto px-4 relative z-10 pt-20">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          className="max-w-2xl"
-        >
-          <motion.p variants={fadeUp} custom={0} className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
-            Cistara International FZE
-          </motion.p>
-          <motion.h1 variants={fadeUp} custom={1} className="text-5xl md:text-7xl font-display font-bold leading-tight mb-4">
-            Premier Hospitality{" "}
-            <span className="gradient-gold-text">Supply Partner</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} custom={2} className="text-xl font-serif text-muted-foreground mb-8 italic">
-            Excellence Meets Elegance
-          </motion.p>
-          <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4">
-            <Link
-              to="/products"
-              className="gradient-gold rounded-full px-8 py-3.5 font-semibold text-primary-foreground hover:scale-105 transition-transform inline-flex items-center gap-2"
-            >
-              View Products <ArrowRight size={18} />
-            </Link>
-            <Link
-              to="/contact"
-              className="rounded-full px-8 py-3.5 font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              Contact Us
-            </Link>
+const Index = () => {
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeadlineIndex((prev) => (prev + 1) % heroHeadlines.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Layout>
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroImg} alt="Premium glassware" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 pt-20">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            className="max-w-2xl"
+          >
+            <motion.p variants={fadeUp} custom={0} className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+              Cistara International FZE
+            </motion.p>
+            <div className="h-[120px] md:h-[160px] mb-4 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.h1
+                  key={headlineIndex}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -40 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-5xl md:text-7xl font-display font-bold leading-tight"
+                >
+                  {heroHeadlines[headlineIndex].top}{" "}
+                  <span className="gradient-gold-text">{heroHeadlines[headlineIndex].highlight}</span>
+                </motion.h1>
+              </AnimatePresence>
+            </div>
+            <motion.p variants={fadeUp} custom={2} className="text-xl font-serif text-muted-foreground mb-8 italic">
+              Excellence Meets Elegance
+            </motion.p>
+            <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4">
+              <Link
+                to="/products"
+                className="gradient-gold rounded-full px-8 py-3.5 font-semibold text-primary-foreground hover:scale-105 transition-transform inline-flex items-center gap-2"
+              >
+                View Products <ArrowRight size={18} />
+              </Link>
+              <Link
+                to="/contact"
+                className="rounded-full px-8 py-3.5 font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
 
     {/* Intro */}
     <section className="section-padding">
@@ -194,7 +224,8 @@ const Index = () => (
         </Link>
       </div>
     </section>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default Index;
