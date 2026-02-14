@@ -1,27 +1,41 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/Layout";
-import wineImg from "@/assets/wine-glass.jpg";
-import spiritsImg from "@/assets/spirits-glass.jpg";
-import beerImg from "@/assets/beer-glass.jpg";
-import cafeImg from "@/assets/cafe-essentials.jpg";
-import champagneImg from "@/assets/champagne-glass.jpg";
+import bordeauxImg from "@/assets/bordeaux-glass.jpg";
+import champagneImg from "@/assets/champagne-flute.jpg";
+import whiskeyImg from "@/assets/whiskey-tumbler.jpg";
+import highballImg from "@/assets/highball-glass.jpg";
+import pilsnerImg from "@/assets/pilsner-glass.jpg";
+import beerGobletImg from "@/assets/beer-goblet.jpg";
+import cappuccinoImg from "@/assets/cappuccino-cup.jpg";
+import espressoImg from "@/assets/espresso-cup.jpg";
+import latteImg from "@/assets/latte-glass.jpg";
+import cakeDomeImg from "@/assets/cake-dome.jpg";
+import gastronormImg from "@/assets/gastronorm.jpg";
+import buffetRiserImg from "@/assets/buffet-riser.jpg";
+import fryPanImg from "@/assets/fry-pan.jpg";
 
 const allProducts = [
-  { name: "Bordeaux Wine Glass", category: "Wine & Champagne", image: wineImg, capacity: "650ml", height: "235mm" },
+  { name: "Bordeaux Wine Glass", category: "Wine & Champagne", image: bordeauxImg, capacity: "650ml", height: "235mm" },
   { name: "Champagne Flute", category: "Wine & Champagne", image: champagneImg, capacity: "210ml", height: "225mm" },
-  { name: "Burgundy Wine Glass", category: "Wine & Champagne", image: wineImg, capacity: "730ml", height: "240mm" },
-  { name: "Crystal Whiskey Tumbler", category: "Spirits & Liquor", image: spiritsImg, capacity: "300ml", height: "100mm" },
-  { name: "Old Fashioned Glass", category: "Spirits & Liquor", image: spiritsImg, capacity: "350ml", height: "95mm" },
-  { name: "Highball Glass", category: "Spirits & Liquor", image: spiritsImg, capacity: "400ml", height: "150mm" },
-  { name: "Pilsner Glass", category: "Beer", image: beerImg, capacity: "500ml", height: "200mm" },
-  { name: "Craft Beer Goblet", category: "Beer", image: beerImg, capacity: "400ml", height: "180mm" },
-  { name: "Cappuccino Cup & Saucer", category: "Café Essentials", image: cafeImg, capacity: "200ml", height: "80mm" },
-  { name: "Espresso Cup Set", category: "Café Essentials", image: cafeImg, capacity: "90ml", height: "60mm" },
-  { name: "Latte Glass", category: "Café Essentials", image: cafeImg, capacity: "350ml", height: "140mm" },
+  { name: "Burgundy Wine Glass", category: "Wine & Champagne", image: bordeauxImg, capacity: "730ml", height: "240mm" },
+  { name: "Crystal Whiskey Tumbler", category: "Spirits & Liquor", image: whiskeyImg, capacity: "300ml", height: "100mm" },
+  { name: "Old Fashioned Glass", category: "Spirits & Liquor", image: whiskeyImg, capacity: "350ml", height: "95mm" },
+  { name: "Highball Glass", category: "Spirits & Liquor", image: highballImg, capacity: "400ml", height: "150mm" },
+  { name: "Pilsner Glass", category: "Beer", image: pilsnerImg, capacity: "500ml", height: "200mm" },
+  { name: "Craft Beer Goblet", category: "Beer", image: beerGobletImg, capacity: "400ml", height: "180mm" },
+  { name: "Cappuccino Cup & Saucer", category: "Café Essentials", image: cappuccinoImg, capacity: "200ml", height: "80mm" },
+  { name: "Espresso Cup Set", category: "Café Essentials", image: espressoImg, capacity: "90ml", height: "60mm" },
+  { name: "Latte Glass", category: "Café Essentials", image: latteImg, capacity: "350ml", height: "140mm" },
+  { name: "Dust Proof Cake Dome", category: "Buffet & Kitchen", image: cakeDomeImg, capacity: "—", height: "280mm" },
+  { name: "Gastronorm GN 1/1", category: "Buffet & Kitchen", image: gastronormImg, capacity: "9L", height: "100mm" },
+  { name: "Gastronorm GN 1/2", category: "Buffet & Kitchen", image: gastronormImg, capacity: "4L", height: "100mm" },
+  { name: "Gastronorm GN 1/3", category: "Buffet & Kitchen", image: gastronormImg, capacity: "2.5L", height: "100mm" },
+  { name: "Luxury Square Buffet Riser", category: "Buffet & Kitchen", image: buffetRiserImg, capacity: "—", height: "150mm" },
+  { name: "SS PFOA-Free Shallow Fry Pan", category: "Buffet & Kitchen", image: fryPanImg, capacity: "—", height: "Ø280mm" },
 ];
 
-const categories = ["All", "Wine & Champagne", "Spirits & Liquor", "Beer", "Café Essentials"];
+const categories = ["All", "Wine & Champagne", "Spirits & Liquor", "Beer", "Café Essentials", "Buffet & Kitchen"];
 
 const Products = () => {
   const [active, setActive] = useState("All");
@@ -39,7 +53,7 @@ const Products = () => {
             Our <span className="gradient-gold-text">Products</span>
           </motion.h1>
           <p className="text-muted-foreground font-serif text-lg mb-8">
-            Premium glassware and hospitality essentials for discerning establishments
+            Premium glassware, buffet equipment, and hospitality essentials for discerning establishments
           </p>
 
           {/* Filters */}

@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, Award, Headphones, Shield, Leaf } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImg from "@/assets/hero-glassware.jpg";
-import wineImg from "@/assets/wine-glass.jpg";
-import spiritsImg from "@/assets/spirits-glass.jpg";
-import beerImg from "@/assets/beer-glass.jpg";
-import cafeImg from "@/assets/cafe-essentials.jpg";
+import wineImg from "@/assets/bordeaux-glass.jpg";
+import spiritsImg from "@/assets/whiskey-tumbler.jpg";
+import beerImg from "@/assets/pilsner-glass.jpg";
+import cafeImg from "@/assets/cappuccino-cup.jpg";
+import buffetImg from "@/assets/buffet-riser.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,6 +23,7 @@ const categories = [
   { title: "Spirits & Liquor", image: spiritsImg, desc: "Crystal-clear barware collection" },
   { title: "Beer Glassware", image: beerImg, desc: "Premium craft beer glasses" },
   { title: "Café Essentials", image: cafeImg, desc: "Refined coffee & tea service" },
+  { title: "Buffet & Kitchen", image: buffetImg, desc: "Professional buffet & kitchen equipment" },
 ];
 
 const features = [
