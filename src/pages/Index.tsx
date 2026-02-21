@@ -58,19 +58,21 @@ const Index = () => {
     <Layout>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={headlineIndex}
-            src={heroHeadlines[headlineIndex].bg}
-            alt="Premium glassware"
-            className="w-full h-full object-cover object-center"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+        <div className="absolute inset-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={headlineIndex}
+              src={heroHeadlines[headlineIndex].bg}
+              alt="Premium glassware"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <motion.div
