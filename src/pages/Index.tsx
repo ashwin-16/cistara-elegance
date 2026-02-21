@@ -9,6 +9,8 @@ import spiritsImg from "@/assets/whiskey-tumbler.jpg";
 import beerImg from "@/assets/pilsner-glass.jpg";
 import cafeImg from "@/assets/cappuccino-cup.jpg";
 import buffetImg from "@/assets/buffet-riser.jpg";
+import cakeDomeImg from "@/assets/cake-dome.jpg";
+import fryPanImg from "@/assets/fry-pan.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -35,11 +37,11 @@ const features = [
 ];
 
 const heroHeadlines = [
-  { top: "Premier Hospitality", highlight: "Supply Partner" },
-  { top: "Premium Malta", highlight: "Glassware" },
-  { top: "Elegant Cake", highlight: "Dome Stands" },
-  { top: "Luxury Buffet", highlight: "Equipment" },
-  { top: "Fine Dining", highlight: "Essentials" },
+  { top: "Premier Hospitality", highlight: "Supply Partner", bg: heroImg },
+  { top: "Premium Malta", highlight: "Glassware", bg: wineImg },
+  { top: "Elegant Cake", highlight: "Dome Stands", bg: cakeDomeImg },
+  { top: "Luxury Buffet", highlight: "Equipment", bg: buffetImg },
+  { top: "Fine Dining", highlight: "Essentials", bg: fryPanImg },
 ];
 
 const Index = () => {
@@ -56,10 +58,19 @@ const Index = () => {
     <Layout>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="Premium glassware" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={headlineIndex}
+            src={heroHeadlines[headlineIndex].bg}
+            alt="Premium glassware"
+            className="w-full h-full object-cover object-center"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <motion.div
